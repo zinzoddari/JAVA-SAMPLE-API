@@ -24,7 +24,7 @@ public class ListResponse<T> {
     private long totalCount;
 
     @Schema(description = "리스트 값")
-    private List<T> result;
+    private List<T> data;
 
     public static <T, R> ListResponse<R> from(Page<T> page, Function<T, R> converter) {
         List<R> data = page.getContent()
@@ -36,7 +36,7 @@ public class ListResponse<T> {
 
         response.size = page.getSize();
         response.currentPage = page.getNumber() + 1;
-        response.result = data;
+        response.data = data;
         response.totalCount = page.getTotalElements();
 
         return response;

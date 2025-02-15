@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -42,6 +43,12 @@ class RootExceptionHandler extends ResponseEntityExceptionHandler {
         return createMessage(HttpStatus.INTERNAL_SERVER_ERROR, e);
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    protected ErrorResponse notFoundExceptionHandler(NotFoundException e) {
+        log.error("[ NotFoundException ] : ", e);
+        return createMessage(HttpStatus.NOT_FOUND, e);
+    }
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {

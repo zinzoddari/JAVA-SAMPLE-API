@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>배너</th>
+            <th>생성 일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${result.data}" th:attr="onclick=|goDetail(${item.id})|" style="cursor: pointer;">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.title}"></td>
+            <td>
+                <img th:src="${item.banner}" alt="배너 이미지" width="100">
+            </td>
+            <td th:text="${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-end mb-3">
+        <a href="/admin/view/notice/register" class="btn btn-primary">공지사항 등록</a>
+    </div>
+</body>
+</html>
+
+<script>
+    function goDetail(id) {
+        window.location.href = `/admin/view/notice/${id}`;
+    }
+</script>

@@ -31,7 +31,7 @@ public class NoticeListResponse {
         response.id = notice.getId();
         response.title = notice.getTitle();
         response.banner = notice.getBanner();
-        response.createdDate = null;
+        response.createdDate = notice.getCreatedDate();
 
         return response;
     }

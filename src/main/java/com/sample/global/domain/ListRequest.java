@@ -22,7 +22,7 @@ public class ListRequest {
     @Parameter(description = "조회 페이지", example = "1")
     private Integer currentPage;
 
-    protected ListRequest() {
+    public ListRequest() {
         this.size = DEFAULT_LIST_SIZE;
         this.currentPage = DEFAULT_PAGE;
     }
