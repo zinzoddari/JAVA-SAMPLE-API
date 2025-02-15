@@ -23,6 +23,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+	//bootstrap
+	implementation("org.webjars:webjars-locator:0.45")
+	implementation("org.webjars:bootstrap:5.1.3")
 
 	//test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
